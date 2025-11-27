@@ -1,0 +1,37 @@
+{
+  "realm": "Cyberlearn",
+  "enabled": true,
+  "users": [
+    {
+      "username": "demo_user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Demo",
+      "lastName": "User",
+      "email": "demo@example.com"
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "cyberlearn-frontend",
+      "publicClient": true,
+      "redirectUris": [
+        "http://frontend.cyberlearn.local/*"
+      ],
+      "webOrigins": [
+        "*"
+      ]
+    }
+  ],
+  "requiredActions": [
+    "CONFIGURE_TOTP"
+  ],
+  "identityProviders": [
+    {
+      "alias": "google",
+      "providerId": "google",
+      "enabled": false,
+      "config": {}
+    }
+  ]
+}

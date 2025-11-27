@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cyberlearn-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cyberlearn-backend
+  template:
+    metadata:
+      labels:
+        app: cyberlearn-backend
+    spec:
+      containers:
+        - name: backend
+          image: cyberlearn/backend:local
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DATABASE_URL
+              value: postgres://cyberlearn:cyberlearnpass@postgres:5432/cyberlearn
+            - name: REDIS_URL
+              value: redis://redis:6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cyberlearn-backend
+spec:
+  ports:
+    - port: 4000
+  selector:
+    app: cyberlearn-backend

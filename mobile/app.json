@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "CyberlearnMobile",
+    "slug": "cyberlearn-mobile",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
+  }
+}

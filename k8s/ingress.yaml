@@ -1,0 +1,39 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cyberlearn-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: frontend.cyberlearn.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cyberlearn-frontend
+                port:
+                  number: 80
+    - host: auth.cyberlearn.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 80
+    - host: api.cyberlearn.local
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: cyberlearn-backend
+                port:
+                  number: 4000
